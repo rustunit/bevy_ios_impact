@@ -42,6 +42,12 @@ impl Default for ImpactFeedbackGeneratorResource {
 }
 
 impl ImpactFeedbackGeneratorResource {
+    /// Prepares the Taptic engine
+    #[cfg(target_os = "ios")]
+    pub fn prepare(&self) {
+        self.light.prepare();
+    }
+
     ///
     #[cfg(target_os = "ios")]
     pub fn impact(&self, style: UIImpactFeedbackStyle) {
@@ -67,6 +73,9 @@ impl ImpactFeedbackGeneratorResource {
         };
         generator.impact_with_intensity(intensity);
     }
+
+    #[cfg(not(target_os = "ios"))]
+    pub fn prepare(&self) {}
 
     #[cfg(not(target_os = "ios"))]
     pub fn impact(&self, _style: UIImpactFeedbackStyle) {}

@@ -32,6 +32,15 @@ impl ImpactFeedbackGenerator {
         }
     }
 
+    /// see `prepare` on `UIImpactFeedbackGenerator`.
+    ///
+    /// [`prepare`]: crate:UIImpactFeedbackGenerator::prepare
+    pub fn prepare(&self) {
+        if let Ok(internal) = self.internal.lock() {
+            internal.prepare();
+        }
+    }
+
     /// see `impactOccurred` on `UIImpactFeedbackGenerator`.
     ///
     /// [`impactOccurred`]: crate:UIImpactFeedbackGenerator::impactOccurred

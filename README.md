@@ -16,6 +16,12 @@ Example:
 app.init_resource::<bevy_ios_impact::ImpactFeedbackGeneratorResource>();
 
 fn my_system(ios_impact: Res<bevy_ios_impact::ImpactFeedbackGeneratorResource>) {
+  // optional: haptic engine might be asleep though if not prepared
+  // in practice i never felt a delay, but see apple docs on this:
+  //  https://developer.apple.com/documentation/uikit/uifeedbackgenerator?language=objc
+  ios_impact.prepare();
+
+  // triggere the impact with different impact strengths (or 'style')
   ios_impact.impact(bevy_ios_impact::UIImpactFeedbackStyle::UIImpactFeedbackStyleHeavy);
 }
 ```
