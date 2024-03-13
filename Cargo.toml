@@ -1,7 +1,13 @@
 [package]
 name = "bevy_ios_impact"
 version = "0.1.0"
+license = "MIT"
+description = "allows using ios ImpactFeedback API to generate haptic device vibrations"
+authors = ["rusticorn <mail@rusticorn.com>"]
 edition = "2021"
+readme = "README.md"
+homepage = "https://github.com/extrawurst/gitui"
+repository = "https://github.com/extrawurst/gitui"
 
 [dependencies]
 objc2 = "0.5.0"
