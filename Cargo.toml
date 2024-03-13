@@ -10,9 +10,9 @@ homepage = "https://github.com/extrawurst/gitui"
 repository = "https://github.com/extrawurst/gitui"
 
 [dependencies]
-objc2 = "0.5.0"
+objc2 = "0.4.1"
 bevy = { version = "0.13", default-features = false }
 
 [dependencies.icrate]
-version = "0.1.0"
+version = "0.0.4"
 features = ["Foundation"]
