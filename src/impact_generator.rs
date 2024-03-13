@@ -22,11 +22,8 @@ unsafe impl Sync for ImpactFeedbackGenerator {}
 #[cfg(target_os = "ios")]
 impl ImpactFeedbackGenerator {
     /// creates `UIImpactFeedbackGenerator` with the given style.
-    ///
-    /// implicitly prepares the generator too
     pub fn new(style: UIImpactFeedbackStyle) -> Self {
         let generator = UIImpactFeedbackGenerator::initWithStyle(style).unwrap();
-        generator.prepare();
         Self {
             internal: Arc::new(Mutex::new(generator)),
         }
