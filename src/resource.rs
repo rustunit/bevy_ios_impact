@@ -44,42 +44,39 @@ impl Default for ImpactFeedbackGeneratorResource {
 impl ImpactFeedbackGeneratorResource {
     /// Prepares the Taptic engine
     #[cfg(target_os = "ios")]
-    pub fn prepare(&self) {
+    pub fn prepare(&mut self) {
         self.light.prepare();
     }
 
     ///
     #[cfg(target_os = "ios")]
-    pub fn impact(&self, style: UIImpactFeedbackStyle) {
-        let generator = match style {
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleLight => &self.light,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleMedium => &self.medium,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleHeavy => &self.heavy,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleSoft => &self.soft,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleRigid => &self.rigid,
-        };
-        generator.impact();
+    pub fn impact(&mut self, style: UIImpactFeedbackStyle) {
+        self.get_generator(style).impact();
     }
 
     ///
     #[cfg(target_os = "ios")]
-    pub fn impact_with_intensity(&self, style: UIImpactFeedbackStyle, intensity: f64) {
-        let generator = match style {
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleLight => &self.light,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleMedium => &self.medium,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleHeavy => &self.heavy,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleSoft => &self.soft,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleRigid => &self.rigid,
-        };
-        generator.impact_with_intensity(intensity);
+    pub fn impact_with_intensity(&mut self, style: UIImpactFeedbackStyle, intensity: f64) {
+        self.get_generator(style).impact_with_intensity(intensity);
+    }
+
+    #[cfg(target_os = "ios")]
+    fn get_generator(&mut self, style: UIImpactFeedbackStyle) -> &mut ImpactFeedbackGenerator {
+        match style {
+            UIImpactFeedbackStyle::UIImpactFeedbackStyleLight => &mut self.light,
+            UIImpactFeedbackStyle::UIImpactFeedbackStyleMedium => &mut self.medium,
+            UIImpactFeedbackStyle::UIImpactFeedbackStyleHeavy => &mut self.heavy,
+            UIImpactFeedbackStyle::UIImpactFeedbackStyleSoft => &mut self.soft,
+            UIImpactFeedbackStyle::UIImpactFeedbackStyleRigid => &mut self.rigid,
+        }
     }
 
     #[cfg(not(target_os = "ios"))]
-    pub fn prepare(&self) {}
+    pub fn prepare(&mut self) {}
 
     #[cfg(not(target_os = "ios"))]
-    pub fn impact(&self, _style: UIImpactFeedbackStyle) {}
+    pub fn impact(&mut self, _style: UIImpactFeedbackStyle) {}
 
     #[cfg(not(target_os = "ios"))]
-    pub fn impact_with_intensity(&self, _style: UIImpactFeedbackStyle, _intensity: f64) {}
+    pub fn impact_with_intensity(&mut self, _style: UIImpactFeedbackStyle, _intensity: f64) {}
 }
