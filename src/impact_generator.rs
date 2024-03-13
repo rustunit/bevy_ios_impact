@@ -1,18 +1,25 @@
-use std::sync::{Arc, Mutex};
-
+#[cfg(target_os = "ios")]
 use crate::{UIImpactFeedbackGenerator, UIImpactFeedbackStyle};
+#[cfg(target_os = "ios")]
+use std::sync::{Arc, Mutex};
 
 /// threadsafe abstraction over `UIImpactFeedbackGenerator`.
 ///
 /// [`UIImpactFeedbackGenerator`]: crate::UIImpactFeedbackGenerator
+#[cfg(target_os = "ios")]
 #[derive(Clone, Debug)]
 pub struct ImpactFeedbackGenerator {
     internal: Arc<Mutex<objc2::rc::Id<UIImpactFeedbackGenerator>>>,
 }
 
+#[cfg(not(target_os = "ios"))]
+#[derive(Clone, Debug)]
+pub struct ImpactFeedbackGenerator;
+
 unsafe impl Send for ImpactFeedbackGenerator {}
 unsafe impl Sync for ImpactFeedbackGenerator {}
 
+#[cfg(target_os = "ios")]
 impl ImpactFeedbackGenerator {
     /// creates `UIImpactFeedbackGenerator` with the given style.
     ///

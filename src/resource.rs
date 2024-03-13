@@ -6,6 +6,7 @@ use crate::{impact_generator::ImpactFeedbackGenerator, UIImpactFeedbackStyle};
 ///
 /// creates an instance of all possible impact styles and prepares them to be available right on app start (or whenever the resource is initialized)
 #[derive(Resource, Clone, Debug)]
+#[allow(dead_code)]
 pub struct ImpactFeedbackGeneratorResource {
     light: ImpactFeedbackGenerator,
     medium: ImpactFeedbackGenerator,
@@ -15,6 +16,7 @@ pub struct ImpactFeedbackGeneratorResource {
 }
 
 impl Default for ImpactFeedbackGeneratorResource {
+    #[cfg(target_os = "ios")]
     fn default() -> Self {
         Self {
             light: ImpactFeedbackGenerator::new(UIImpactFeedbackStyle::UIImpactFeedbackStyleLight),
@@ -26,10 +28,22 @@ impl Default for ImpactFeedbackGeneratorResource {
             rigid: ImpactFeedbackGenerator::new(UIImpactFeedbackStyle::UIImpactFeedbackStyleRigid),
         }
     }
+
+    #[cfg(not(target_os = "ios"))]
+    fn default() -> Self {
+        Self {
+            light: ImpactFeedbackGenerator {},
+            medium: ImpactFeedbackGenerator {},
+            heavy: ImpactFeedbackGenerator {},
+            soft: ImpactFeedbackGenerator {},
+            rigid: ImpactFeedbackGenerator {},
+        }
+    }
 }
 
 impl ImpactFeedbackGeneratorResource {
     ///
+    #[cfg(target_os = "ios")]
     pub fn impact(&self, style: UIImpactFeedbackStyle) {
         let generator = match style {
             UIImpactFeedbackStyle::UIImpactFeedbackStyleLight => &self.light,
@@ -42,6 +56,7 @@ impl ImpactFeedbackGeneratorResource {
     }
 
     ///
+    #[cfg(target_os = "ios")]
     pub fn impact_with_intensity(&self, style: UIImpactFeedbackStyle, intensity: f64) {
         let generator = match style {
             UIImpactFeedbackStyle::UIImpactFeedbackStyleLight => &self.light,
@@ -52,4 +67,10 @@ impl ImpactFeedbackGeneratorResource {
         };
         generator.impact_with_intensity(intensity);
     }
+
+    #[cfg(not(target_os = "ios"))]
+    pub fn impact(&self, _style: UIImpactFeedbackStyle) {}
+
+    #[cfg(not(target_os = "ios"))]
+    pub fn impact_with_intensity(&self, _style: UIImpactFeedbackStyle, _intensity: f64) {}
 }
