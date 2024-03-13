@@ -7,7 +7,9 @@ On non-ios platforms this has no effect and will compile.
 Currently build for `bevy="0.13"`.
 
 This is a pre-release and only available via git dependency for now: 
-`bevy_ios_impact = { version = "0.1.0", git = "https://github.com/rustunit/bevy_ios_impact.git" }`
+```
+bevy_ios_impact = { version = "0.1.0", git = "https://github.com/rustunit/bevy_ios_impact.git" }
+```
 
 Example:
 ```rust
