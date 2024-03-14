@@ -8,7 +8,7 @@ Currently build for `bevy="0.13"`.
 
 usage:
 ```
-bevy_ios_impact = { version = "0.1.0" }
+bevy_ios_impact = { version = "0.1" }
 ```
 
 Example:
