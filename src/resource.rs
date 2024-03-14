@@ -13,6 +13,8 @@ pub struct ImpactResource {
 
 impl ImpactResource {
     /// Prepares the Taptic engine.
+    /// According to apple docs the engine might be asleep if not prepared, which could leads to delays.
+    /// If not used via eg. [impact] the engine will go back to sleep to save battery.
     ///
     /// refer to apple documentation for more details:
     /// see <https://developer.apple.com/documentation/uikit/uifeedbackgenerator/2369818-prepare?language=objc>
@@ -22,7 +24,7 @@ impl ImpactResource {
         self.inner.prepare();
     }
 
-    /// Triggers an impact with the given [style].
+    /// Triggers an impact with the given `style`.
     ///
     /// refer to apple documentation for more details:
     /// see <https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/2374286-impactoccurred?language=objc>
