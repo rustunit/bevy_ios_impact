@@ -8,6 +8,7 @@ edition = "2021"
 readme = "README.md"
 homepage = "https://github.com/rustunit/bevy_ios_impact"
 repository = "https://github.com/rustunit/bevy_ios_impact"
+documentation = "https://docs.rs/ios_impact"
 keywords = ["objective-c", "mobile", "ios", "objc"]
 categories = ["api-bindings", "os::macos-apis"]
 
