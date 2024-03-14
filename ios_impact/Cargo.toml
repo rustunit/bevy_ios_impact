@@ -1,20 +1,15 @@
 [package]
-name = "bevy_ios_impact"
+name = "ios_impact"
 version = "0.1.0"
 license = "MIT OR Apache-2.0"
-description = "allows using ios ImpactFeedback API to generate haptic device vibrations"
+description = "objc2 abstractions over ios UIKit UIFeedbackGenerator"
 authors = ["rusticorn <mail@rusticorn.com>"]
 edition = "2021"
 readme = "README.md"
 homepage = "https://github.com/rustunit/bevy_ios_impact"
 repository = "https://github.com/rustunit/bevy_ios_impact"
 keywords = ["gamedev", "bevy", "ios", "mobile"]
-categories = ["game-engines"]
-
-[workspace]
-members = ["ios_impact"]
 
 [dependencies]
-bevy = { version = "0.13", default-features = false }
-ios_impact = { version = "0.1.0", path = "./ios_impact" }
+icrate = { version = "0.0.4", features = ["Foundation"] }
 objc2 = "0.4.1"

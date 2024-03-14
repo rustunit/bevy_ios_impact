@@ -13,9 +13,9 @@ bevy_ios_impact = { version = "0.1.0", git = "https://github.com/rustunit/bevy_i
 
 Example:
 ```rust
-app.init_resource::<bevy_ios_impact::ImpactFeedbackGeneratorResource>();
+app.add_plugins(bevy_ios_impact::ImpactPlugin);
 
-fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactFeedbackGeneratorResource>) {
+fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactResource>) {
   // optional: haptic engine might be asleep if not prepared.
   // in practice i never felt a delay, but see apple docs on this:
   // https://developer.apple.com/documentation/uikit/uifeedbackgenerator?language=objc

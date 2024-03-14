@@ -4,7 +4,9 @@ use objc2::{
 };
 
 extern_class!(
-    ///see `https://developer.apple.com/documentation/uikit/uifeedbackgenerator?language=objc`
+    /// objc2 abstraction over UIKit UIFeedbackGenerator.
+    ///
+    /// see <https://developer.apple.com/documentation/uikit/uifeedbackgenerator?language=objc>
     #[derive(Debug, PartialEq, Eq, Hash)]
     pub struct UIFeedbackGenerator;
 
@@ -16,13 +18,18 @@ extern_class!(
 
 extern_methods!(
     unsafe impl UIFeedbackGenerator {
+        /// objc2 abstraction over UIKit UIFeedbackGenerator.
+        ///
+        /// see <https://developer.apple.com/documentation/uikit/uifeedbackgenerator/2369818-prepare?language=objc>
         #[method(prepare)]
         pub fn prepare(&self);
     }
 );
 
 extern_class!(
-    ///see `https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator`
+    /// objc2 abstraction over UIKit UIImpactFeedbackGenerator.
+    ///
+    /// see <https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator?language=objc>
     #[derive(Debug, PartialEq, Eq, Hash)]
     pub struct UIImpactFeedbackGenerator;
 
@@ -32,7 +39,9 @@ extern_class!(
     }
 );
 
-///see `https://developer.apple.com/documentation/uikit/uiimpactfeedbackstyle?language=objc`
+/// objc2 abstraction over UIKit UIImpactFeedbackStyle.
+///
+/// see <https://developer.apple.com/documentation/uikit/uiimpactfeedbackstyle?language=objc>
 #[derive(Debug, PartialEq, Eq)]
 #[allow(dead_code)]
 #[repr(isize)]
@@ -50,7 +59,9 @@ unsafe impl Encode for UIImpactFeedbackStyle {
 
 extern_methods!(
     unsafe impl UIImpactFeedbackGenerator {
-        ///see `https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/2374286-initwithstyle?language=objc`
+        /// objc2 abstraction over UIKit UIImpactFeedbackGenerator::initWithStyle.
+        ///
+        /// see <https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/2374286-initwithstyle?language=objc>
         #[allow(non_snake_case)]
         pub fn initWithStyle(style: UIImpactFeedbackStyle) -> Option<Id<Self>> {
             let this = UIImpactFeedbackGenerator::alloc();
@@ -62,12 +73,16 @@ extern_methods!(
             }
         }
 
-        ///see `https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/2374287-impactoccurred?language=objc`
+        /// objc2 abstraction over UIKit UIImpactFeedbackGenerator::impactOccurred.
+        ///
+        /// see <https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/2374286-impactoccurred?language=objc>
         #[allow(non_snake_case)]
         #[method(impactOccurred)]
         pub fn impactOccurred(&self);
 
-        ///see `https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/3183920-impactoccurredwithintensity?language=objc`
+        /// objc2 abstraction over UIKit UIImpactFeedbackGenerator::impactOccurredWithIntensity.
+        ///
+        /// see <https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/2374286-impactoccurredwithintensity?language=objc>
         #[allow(non_snake_case)]
         #[method(impactOccurredWithIntensity:)]
         pub fn impactOccurredWithIntensity(&self, intensity: CGFloat);
