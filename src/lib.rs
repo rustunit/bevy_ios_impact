@@ -14,6 +14,6 @@ pub(crate) mod inner;
 mod plugin;
 mod resource;
 
-pub use ios_impact::UIImpactFeedbackStyle;
+pub use inner::FeedbackStyle;
 pub use plugin::ImpactPlugin;
 pub use resource::ImpactResource;

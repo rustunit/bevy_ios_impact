@@ -1,7 +1,7 @@
 use bevy::ecs::system::Resource;
 
 use crate::inner::SharedGenerators;
-use crate::UIImpactFeedbackStyle;
+use crate::FeedbackStyle;
 
 /// bevy resource: offers interaction with ios impact feedback generators from bevy systems.
 ///
@@ -30,7 +30,7 @@ impl ImpactResource {
     /// see <https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/2374286-impactoccurred?language=objc>
     ///
     /// on platforms other than ios this becomes a no-op.
-    pub fn impact(&mut self, style: UIImpactFeedbackStyle) {
+    pub fn impact(&mut self, style: FeedbackStyle) {
         self.inner.impact(style);
     }
 
@@ -40,7 +40,7 @@ impl ImpactResource {
     /// see <https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator/2374286-impactoccurredwithintensity?language=objc>
     ///
     /// on platforms other than ios this becomes a no-op.
-    pub fn impact_with_intensity(&mut self, style: UIImpactFeedbackStyle, intensity: f64) {
+    pub fn impact_with_intensity(&mut self, style: FeedbackStyle, intensity: f64) {
         self.inner.impact_with_intensity(style, intensity);
     }
 }

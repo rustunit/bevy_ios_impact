@@ -42,22 +42,22 @@ impl ImpactGenerators {
         self.light.prepare();
     }
 
-    pub fn impact(&self, style: UIImpactFeedbackStyle) {
+    pub fn impact(&self, style: FeedbackStyle) {
         self.get_generator(style).impactOccurred();
     }
 
-    pub fn impact_with_intensity(&self, style: UIImpactFeedbackStyle, intensity: f64) {
+    pub fn impact_with_intensity(&self, style: FeedbackStyle, intensity: f64) {
         self.get_generator(style)
             .impactOccurredWithIntensity(intensity);
     }
 
-    fn get_generator(&self, style: UIImpactFeedbackStyle) -> &Id<UIImpactFeedbackGenerator> {
+    fn get_generator(&self, style: FeedbackStyle) -> &Id<UIImpactFeedbackGenerator> {
         match style {
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleLight => &self.light,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleMedium => &self.medium,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleHeavy => &self.heavy,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleSoft => &self.soft,
-            UIImpactFeedbackStyle::UIImpactFeedbackStyleRigid => &self.rigid,
+            FeedbackStyle::Light => &self.light,
+            FeedbackStyle::Medium => &self.medium,
+            FeedbackStyle::Heavy => &self.heavy,
+            FeedbackStyle::Soft => &self.soft,
+            FeedbackStyle::Rigid => &self.rigid,
         }
     }
 }

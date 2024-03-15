@@ -26,15 +26,15 @@ impl SharedGenerators {
         }
     }
 
-    pub fn impact(&self, style: UIImpactFeedbackStyle) {
+    pub fn impact(&self, style: FeedbackStyle) {
         if let Ok(internal) = self.internal.lock() {
-            internal.impact(style);
+            internal.impact(style.into());
         }
     }
 
-    pub fn impact_with_intensity(&self, style: UIImpactFeedbackStyle, intensity: f64) {
+    pub fn impact_with_intensity(&self, style: FeedbackStyle, intensity: f64) {
         if let Ok(internal) = self.internal.lock() {
-            internal.impact_with_intensity(style, intensity);
+            internal.impact_with_intensity(style.into(), intensity);
         }
     }
 }
