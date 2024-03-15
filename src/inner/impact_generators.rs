@@ -1,5 +1,6 @@
 use ios_impact::{UIImpactFeedbackGenerator, UIImpactFeedbackStyle};
 use objc2::rc::Id;
+use super::feedback_style::FeedbackStyle;
 
 #[derive(Clone, Debug)]
 pub(crate) struct ImpactGenerators {

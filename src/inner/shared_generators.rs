@@ -1,5 +1,4 @@
-use super::impact_generators::ImpactGenerators;
-use ios_impact::UIImpactFeedbackStyle;
+use super::{feedback_style::FeedbackStyle, impact_generators::ImpactGenerators};
 
 use std::sync::{Arc, Mutex};
 
