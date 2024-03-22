@@ -8,30 +8,36 @@ use crate::FeedbackStyle;
 /// on platforms other than ios this becomes a no-op
 #[derive(Resource, Clone, Debug, Default)]
 pub struct ImpactResource {
-    inner: SharedGenerators,
-    disabled: bool,
+    inner: Option<SharedGenerators>,
 }
 
 impl ImpactResource {
     /// allows disabling impacts without checking in user-code whether or not to call the `impact` APIs
     pub fn disable(&mut self) {
-        self.disabled = true;
+        self.inner = None;
     }
 
     /// enable impacts
     pub fn enable(&mut self) {
-        self.disabled = true;
+        if self.inner.is_none() {
+            self.inner = Some(SharedGenerators);
+        }
     }
 
     /// allows fetching enabled state
-    pub fn enabled(&mut self) -> bool {
-        self.disabled
+    pub fn enabled(&self) -> bool {
+        self.inner.is_some()
     }
 
     /// toggles enabled state and returns state it toggled to
     pub fn toggle(&mut self) -> bool {
-        self.disabled = !self.disabled;
-        self.disabled
+        if self.inner.is_none() {
+            self.enabled();
+            true
+        } else {
+            self.disable();
+            false
+        }
     }
 
     /// Prepares the Taptic engine.
@@ -43,8 +49,8 @@ impl ImpactResource {
     ///
     /// on platforms other than ios this becomes a no-op.
     pub fn prepare(&mut self) {
-        if !self.disabled {
-            self.inner.prepare();
+        if let Some(inner) = &self.inner {
+            inner.prepare();
         }
     }
 
@@ -55,8 +61,8 @@ impl ImpactResource {
     ///
     /// on platforms other than ios this becomes a no-op.
     pub fn impact(&mut self, style: FeedbackStyle) {
-        if !self.disabled {
-            self.inner.impact(style);
+        if let Some(inner) = &self.inner {
+            inner.impact(style);
         }
     }
 
@@ -67,8 +73,8 @@ impl ImpactResource {
     ///
     /// on platforms other than ios this becomes a no-op.
     pub fn impact_with_intensity(&mut self, style: FeedbackStyle, intensity: f64) {
-        if !self.disabled {
-            self.inner.impact_with_intensity(style, intensity);
+        if let Some(inner) = &self.inner {
+            inner.impact_with_intensity(style, intensity);
         }
     }
 }
