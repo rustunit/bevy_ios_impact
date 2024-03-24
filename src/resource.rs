@@ -20,7 +20,7 @@ impl ImpactResource {
     /// enable impacts
     pub fn enable(&mut self) {
         if self.inner.is_none() {
-            self.inner = Some(SharedGenerators);
+            self.inner = Some(SharedGenerators::default());
         }
     }
 
