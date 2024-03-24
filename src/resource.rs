@@ -6,9 +6,29 @@ use crate::FeedbackStyle;
 /// bevy resource: offers interaction with ios impact feedback generators from bevy systems.
 ///
 /// on platforms other than ios this becomes a no-op
-#[derive(Resource, Clone, Debug, Default)]
+#[derive(Resource, Clone, Debug)]
 pub struct ImpactResource {
     inner: Option<SharedGenerators>,
+}
+
+impl Default for ImpactResource {
+    fn default() -> Self {
+        Self::new(true)
+    }
+}
+
+impl ImpactResource {
+    /// initialize based on config variable.
+    /// ideally for loading up based on saved settings value
+    pub fn new(enabled: bool) -> Self {
+        Self {
+            inner: if enabled {
+                Some(SharedGenerators::default())
+            } else {
+                None
+            },
+        }
+    }
 }
 
 impl ImpactResource {
