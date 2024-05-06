@@ -4,6 +4,8 @@ Exposes [UIImpactFeedbackGenerator](https://developer.apple.com/documentation/ui
 
 On non-ios platforms this has no effect and will compile.
 
+**See also:** [bevy_ios_iap](https://github.com/rustunit/bevy_ios_iap), [bevy_ios_notifications](https://github.com/rustunit/bevy_ios_notifications), [bevy_ios_gamecenter](https://github.com/rustunit/bevy_ios_gamecenter), [bevy_ios_review](https://github.com/rustunit/bevy_ios_review) & [bevy_ios_alerts](https://github.com/rustunit/bevy_ios_alerts)
+
 Currently build for `bevy="0.13"`.
 
 usage:
