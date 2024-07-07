@@ -1,7 +1,7 @@
-use icrate::Foundation::{CGFloat, NSInteger, NSObject};
 use objc2::{
     extern_class, extern_methods, msg_send_id, mutability, rc::Id, ClassType, Encode, Encoding,
 };
+use objc2_foundation::{CGFloat, NSInteger, NSObject};
 
 extern_class!(
     /// objc2 abstraction over UIKit UIFeedbackGenerator.

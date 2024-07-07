@@ -6,11 +6,11 @@ On non-ios platforms this has no effect and will compile.
 
 **See also:** [bevy_ios_iap](https://github.com/rustunit/bevy_ios_iap), [bevy_ios_notifications](https://github.com/rustunit/bevy_ios_notifications), [bevy_ios_gamecenter](https://github.com/rustunit/bevy_ios_gamecenter), [bevy_ios_review](https://github.com/rustunit/bevy_ios_review) & [bevy_ios_alerts](https://github.com/rustunit/bevy_ios_alerts)
 
-Currently build for `bevy="0.13"`.
+Currently build for `bevy="0.14"`.
 
 usage:
 ```
-bevy_ios_impact = { version = "0.1" }
+bevy_ios_impact = { version = "0.2" }
 ```
 
 Example:
@@ -27,6 +27,13 @@ fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactResource>) {
   impacts.impact(bevy_ios_impact::UIImpactFeedbackStyle::UIImpactFeedbackStyleHeavy);
 }
 ```
+
+## Bevy version support
+
+|bevy|bevy\_ios\_impact|
+|----|---|
+|0.14|0.2,main|
+|0.13|0.1|
 
 # License
 

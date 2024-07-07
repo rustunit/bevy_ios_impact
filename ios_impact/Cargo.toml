@@ -1,6 +1,6 @@
 [package]
 name = "ios_impact"
-version = "0.1.1"
+version = "0.2.0"
 license = "MIT OR Apache-2.0"
 description = "objc2 abstractions over ios UIKit UIFeedbackGenerator"
 authors = ["rusticorn <mail@rusticorn.com>"]
@@ -16,5 +16,5 @@ categories = ["api-bindings", "os::macos-apis"]
 default-target = "x86_64-apple-darwin"
 
 [dependencies]
-icrate = { version = "0.0.4", features = ["Foundation"] }
-objc2 = "0.4.1"
+objc2-foundation = { version = "0.2", features = ["NSString", "NSGeometry"] }
+objc2 = "0.5"
