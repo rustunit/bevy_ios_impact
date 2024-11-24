@@ -1,5 +1,16 @@
 # bevy_ios_impact
 
+[![crates.io][sh_crates]][lk_crates]
+[![docs.rs][sh_docs]][lk_docs]
+[![discord][sh_discord]][lk_discord]
+
+[sh_crates]: https://img.shields.io/crates/v/bevy_ios_impact.svg
+[lk_crates]: https://crates.io/crates/bevy_ios_impact
+[sh_docs]: https://img.shields.io/docsrs/bevy_ios_impact
+[lk_docs]: https://docs.rs/bevy_ios_impact/latest/bevy_ios_impact/
+[sh_discord]: https://img.shields.io/discord/1176858176897953872?label=discord&color=5561E6
+[lk_discord]: https://discord.gg/rQNeEnMhus
+
 Exposes [UIImpactFeedbackGenerator](https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator?language=objc) API via Bevy Resource.
 
 On non-ios platforms this has no effect and will compile.
