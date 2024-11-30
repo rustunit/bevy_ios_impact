@@ -3,11 +3,14 @@
 //!
 //! # Example:
 //! ```
+//! use bevy::prelude::*;
+//!
+//! let mut app = App::new();
 //! app.add_plugins(bevy_ios_impact::ImpactPlugin);
 //!
 //! fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactResource>) {
 //!   // triggere the impact with different impact strengths (or 'style')
-//!   impacts.impact(bevy_ios_impact::UIImpactFeedbackStyle::UIImpactFeedbackStyleHeavy);
+//!   impacts.impact(bevy_ios_impact::FeedbackStyle::Light);
 //! }
 //! ```
 pub(crate) mod inner;

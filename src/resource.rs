@@ -23,7 +23,7 @@ impl ImpactResource {
     pub fn new(enabled: bool) -> Self {
         Self {
             inner: if enabled {
-                Some(SharedGenerators::default())
+                Some(Default::default())
             } else {
                 None
             },
@@ -40,7 +40,7 @@ impl ImpactResource {
     /// enable impacts
     pub fn enable(&mut self) {
         if self.inner.is_none() {
-            self.inner = Some(SharedGenerators::default());
+            self.inner = Some(Default::default());
         }
     }
 
