@@ -51,7 +51,7 @@ fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactResource>) {
 
 ## Bevy version support
 
-|bevy|bevy\_ios\_impact|
+|bevy|crate|
 |----|---|
 |0.15|0.3,main|
 |0.14|0.2|
