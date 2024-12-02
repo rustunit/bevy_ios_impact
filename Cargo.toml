@@ -1,6 +1,6 @@
 [package]
 name = "bevy_ios_impact"
-version = "0.2.0"
+version = "0.3.0"
 license = "MIT OR Apache-2.0"
 description = "allows using ios ImpactFeedback API to generate haptic device vibrations"
 authors = ["rusticorn <mail@rusticorn.com>"]

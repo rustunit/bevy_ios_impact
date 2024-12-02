@@ -53,7 +53,7 @@ fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactResource>) {
 
 |bevy|bevy\_ios\_impact|
 |----|---|
-|0.15|main|
+|0.15|0.3,main|
 |0.14|0.2|
 |0.13|0.1|
 
