@@ -15,8 +15,6 @@ Exposes [UIImpactFeedbackGenerator](https://developer.apple.com/documentation/ui
 
 On non-ios platforms this has no effect and will compile.
 
-Currently build for `bevy="0.14"`.
-
 usage:
 ```
 bevy_ios_impact = { version = "0.2" }
