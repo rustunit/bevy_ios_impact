@@ -17,7 +17,7 @@ On non-ios platforms this has no effect and will compile.
 
 usage:
 ```
-bevy_ios_impact = { version = "0.2" }
+bevy_ios_impact = { version = "0.4" }
 ```
 
 Example:
@@ -52,7 +52,8 @@ fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactResource>) {
 
 |bevy|crate|
 |----|---|
-|0.15|0.3,main|
+|0.16|0.4,main|
+|0.15|0.3|
 |0.14|0.2|
 |0.13|0.1|
 

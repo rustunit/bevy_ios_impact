@@ -1,4 +1,4 @@
-use bevy::app::Plugin;
+use bevy_app::{App, Plugin};
 
 use crate::ImpactResource;
 
@@ -6,7 +6,7 @@ use crate::ImpactResource;
 pub struct ImpactPlugin;
 
 impl Plugin for ImpactPlugin {
-    fn build(&self, app: &mut bevy::prelude::App) {
+    fn build(&self, app: &mut App) {
         app.init_resource::<ImpactResource>();
     }
 }

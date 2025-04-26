@@ -1,10 +1,10 @@
 [package]
 name = "bevy_ios_impact"
-version = "0.3.0"
+version = "0.4.0"
 license = "MIT OR Apache-2.0"
 description = "allows using ios ImpactFeedback API to generate haptic device vibrations"
 authors = ["rusticorn <mail@rusticorn.com>"]
-edition = "2021"
+edition = "2024"
 readme = "README.md"
 homepage = "https://github.com/rustunit/bevy_ios_impact"
 repository = "https://github.com/rustunit/bevy_ios_impact"
@@ -19,7 +19,8 @@ members = ["ios_impact"]
 default-target = "x86_64-apple-darwin"
 
 [dependencies]
-bevy = { version = "0.15", default-features = false }
+bevy_app = { version = "0.16", default-features = false }
+bevy_ecs = { version = "0.16", default-features = false }
 
 [target.'cfg(target_os = "ios")'.dependencies.ios_impact]
 version = "0.2"

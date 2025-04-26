@@ -1,7 +1,7 @@
-use bevy::ecs::system::Resource;
+use bevy_ecs::resource::Resource;
 
-use crate::inner::SharedGenerators;
 use crate::FeedbackStyle;
+use crate::inner::SharedGenerators;
 
 /// bevy resource: offers interaction with ios impact feedback generators from bevy systems.
 ///
