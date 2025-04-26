@@ -1,5 +1,5 @@
 use objc2::{
-    extern_class, extern_methods, msg_send_id, mutability, rc::Id, ClassType, Encode, Encoding,
+    ClassType, Encode, Encoding, extern_class, extern_methods, msg_send_id, mutability, rc::Id,
 };
 use objc2_foundation::{CGFloat, NSInteger, NSObject};
 
