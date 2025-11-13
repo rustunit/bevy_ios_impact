@@ -31,7 +31,7 @@ fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactResource>) {
   impacts.prepare();
 
   // triggere the impact with different impact strengths (or 'style')
-  impacts.impact(bevy_ios_impact::UIImpactFeedbackStyle::UIImpactFeedbackStyleHeavy);
+  impacts.impact(bevy_ios_impact::FeedbackStyle::Heavy);
 }
 ```
 
