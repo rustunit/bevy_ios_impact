@@ -1,6 +1,6 @@
 [package]
 name = "bevy_ios_impact"
-version = "0.7.0"
+version = "0.8.0"
 license = "MIT OR Apache-2.0"
 description = "allows using ios ImpactFeedback API to generate haptic device vibrations"
 authors = ["rusticorn <mail@rusticorn.com>"]
@@ -12,9 +12,6 @@ documentation = "https://docs.rs/bevy_ios_impact"
 keywords = ["gamedev", "bevy", "ios", "mobile"]
 categories = ["game-engines"]
 
-[workspace]
-members = ["ios_impact"]
-
 [package.metadata.docs.rs]
 default-target = "x86_64-apple-darwin"
 
@@ -22,9 +19,13 @@ default-target = "x86_64-apple-darwin"
 bevy_app = { version = "0.19", default-features = false }
 bevy_ecs = { version = "0.19", default-features = false }
 
-[target.'cfg(target_os = "ios")'.dependencies.ios_impact]
-version = "0.2"
-path = "./ios_impact"
-
-[target.'cfg(target_os = "ios")'.dependencies.objc2]
-version = "0.5"
+[target.'cfg(target_os = "ios")'.dependencies]
+objc2 = { version = "0.6", default-features = false, features = ["std"] }
+# `objc2-core-foundation` is what gates `impactOccurredWithIntensity:` — 0.3 moved
+# `CGFloat` there.
+objc2-ui-kit = { version = "0.3", default-features = false, features = [
+    "std",
+    "UIFeedbackGenerator",
+    "UIImpactFeedbackGenerator",
+    "objc2-core-foundation",
+] }

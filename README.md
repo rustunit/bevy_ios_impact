@@ -11,26 +11,28 @@
 [sh_discord]: https://img.shields.io/discord/1176858176897953872?label=discord&color=5561E6
 [lk_discord]: https://discord.gg/rQNeEnMhus
 
-Exposes [UIImpactFeedbackGenerator](https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator?language=objc) API via Bevy Resource.
+Exposes [UIImpactFeedbackGenerator](https://developer.apple.com/documentation/uikit/uiimpactfeedbackgenerator?language=objc) API via a Bevy non-send resource.
 
 On non-ios platforms this has no effect and will compile.
 
 usage:
 ```
-bevy_ios_impact = { version = "0.7" }
+bevy_ios_impact = { version = "0.8" }
 ```
 
 Example:
 ```rust
 app.add_plugins(bevy_ios_impact::ImpactPlugin);
 
-fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactResource>) {
+// UIKit's feedback generators are main-thread-only, so this is a `NonSendMut`,
+// not a `ResMut` - that is what pins the system to the main thread.
+fn my_system(mut impacts: NonSendMut<bevy_ios_impact::ImpactResource>) {
   // optional: haptic engine might be asleep if not prepared.
   // in practice i never felt a delay, but see apple docs on this:
   // https://developer.apple.com/documentation/uikit/uifeedbackgenerator?language=objc
   impacts.prepare();
 
-  // triggere the impact with different impact strengths (or 'style')
+  // trigger the impact with different impact strengths (or 'style')
   impacts.impact(bevy_ios_impact::FeedbackStyle::Heavy);
 }
 ```
@@ -52,7 +54,7 @@ fn my_system(mut impacts: ResMut<bevy_ios_impact::ImpactResource>) {
 
 |bevy|crate|
 |----|---|
-|0.19|0.7,main|
+|0.19|0.8,0.7,main|
 |0.18|0.6|
 |0.17|0.5|
 |0.16|0.4|

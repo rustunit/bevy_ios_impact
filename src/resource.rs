@@ -1,14 +1,17 @@
-use bevy_ecs::resource::Resource;
-
 use crate::FeedbackStyle;
-use crate::inner::SharedGenerators;
+use crate::inner::ImpactGenerators;
 
-/// bevy resource: offers interaction with ios impact feedback generators from bevy systems.
+/// bevy **non-send** resource: offers interaction with ios impact feedback generators
+/// from bevy systems. Take it as `NonSendMut<ImpactResource>`.
+///
+/// It cannot be a plain [`Resource`](bevy_ecs::resource::Resource): UIKit's feedback
+/// generators are main-thread-only, and `NonSend` is what pins the systems touching
+/// them to that thread.
 ///
 /// on platforms other than ios this becomes a no-op
-#[derive(Resource, Clone, Debug)]
+#[derive(Clone, Debug)]
 pub struct ImpactResource {
-    inner: Option<SharedGenerators>,
+    inner: Option<ImpactGenerators>,
 }
 
 impl Default for ImpactResource {
@@ -62,7 +65,7 @@ impl ImpactResource {
 
     /// Prepares the Taptic engine.
     /// According to apple docs the engine might be asleep if not prepared, which could leads to delays.
-    /// If not used via eg. [impact] the engine will go back to sleep to save battery.
+    /// If not used via eg. [Self::impact] the engine will go back to sleep to save battery.
     ///
     /// refer to apple documentation for more details:
     /// see <https://developer.apple.com/documentation/uikit/uifeedbackgenerator/2369818-prepare?language=objc>
