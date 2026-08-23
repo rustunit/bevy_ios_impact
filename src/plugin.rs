@@ -7,6 +7,6 @@ pub struct ImpactPlugin;
 
 impl Plugin for ImpactPlugin {
     fn build(&self, app: &mut App) {
-        app.init_resource::<ImpactResource>();
+        app.init_non_send::<ImpactResource>();
     }
 }

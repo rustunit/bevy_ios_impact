@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.8.0] - 2026-08-23
+
+### Changed
+* **BREAKING:** `ImpactResource` is a non-send resource now - take it as
+  `NonSendMut<ImpactResource>` instead of `ResMut<ImpactResource>`. UIKit's feedback
+  generators are main-thread-only, which the old bindings did not model.
+* use `objc2-ui-kit`'s generated bindings instead of the companion `ios_impact` crate
+
+### Removed
+* the companion `ios_impact` crate
+
 ## [0.7.0] - 2026-08-09
 
 ### Changes
