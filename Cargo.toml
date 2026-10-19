@@ -1,6 +1,6 @@
 [package]
 name = "bevy_ios_impact"
-version = "0.8.0"
+version = "0.9.0"
 license = "MIT OR Apache-2.0"
 description = "allows using ios ImpactFeedback API to generate haptic device vibrations"
 authors = ["rusticorn <mail@rusticorn.com>"]
@@ -16,8 +16,8 @@ categories = ["game-engines"]
 default-target = "x86_64-apple-darwin"
 
 [dependencies]
-bevy_app = { version = "0.19", default-features = false }
-bevy_ecs = { version = "0.19", default-features = false }
+bevy_app = { version = "0.20", default-features = false }
+bevy_ecs = { version = "0.20", default-features = false }
 
 [target.'cfg(target_os = "ios")'.dependencies]
 objc2 = { version = "0.6", default-features = false, features = ["std"] }
